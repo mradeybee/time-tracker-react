@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 import '../assets/css/Home.css';
 import Form from './Form'
-import {loginUser, signUpUser} from '../actionCreators/authActionCreators'
-// import { connect } from 'react-redux'
+import Timer from './Timer'
+import {loginUser, signUpUser} from '../actions/authActionCreators'
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props)
 
@@ -23,7 +25,7 @@ export default class Home extends Component {
       data[entry[0]] = entry[1]
     }
 
-    this.state.formTitle === 'Log In' ? loginUser(data) : signUpUser(data)
+    this.state.formTitle === 'Log In' ? this.props.loginUser(data) : this.props.signUpUser(data)
   }
 
   toggleForm(event) {
@@ -34,10 +36,23 @@ export default class Home extends Component {
   }
 
   render() {
+    const authoken = this.props.auth.user.jwt
+
     return (
       <div className="Home">
-        <Form formTitle={this.state.formTitle} onSubmit={this.onSubmit} toggleForm={this.toggleForm} />
+        {
+          authoken ? <Timer /> :
+          <Form
+            formTitle={this.state.formTitle}
+            onSubmit={this.onSubmit}
+            toggleForm={this.toggleForm}
+            formError={this.props.auth.signUpError || this.props.auth.loginError}
+          />
+        }
       </div>
     );
   }
 }
+
+const mapStateToProps = ({auth}) => ({auth})
+export default connect(mapStateToProps, { loginUser, signUpUser })(Home)

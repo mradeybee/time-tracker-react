@@ -15,6 +15,7 @@ class App extends Component {
             formTitle === 'Log In' ?  <p>Don't have an account? <a onClick={this.props.toggleForm}>Sign Up</a></p> :
             <p>Already Signed up? <a onClick={this.props.toggleForm}>Log In</a></p>
           }
+          <p>{this.props.formError}</p>
         </form>        
       </div>
     );

@@ -8,18 +8,20 @@
 
 .App-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+
   background-color: #222;
-  height: 20px;
-  padding: 20px;
+  padding: 35px;
   color: white;
   width: 100%;
-  font-size: xx-large;
+  font-size: large;
 }
 
 .App-header > a {
   color: white;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 
