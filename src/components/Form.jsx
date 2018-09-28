@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/css/Form.css';
 
-class App extends Component {
+export default class Form extends Component {
   render() {
     const formTitle = this.props.formTitle
     return (
@@ -21,5 +21,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
