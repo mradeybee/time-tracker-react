@@ -6,7 +6,7 @@ import Form from './Form'
 import Timer from './Timer'
 import {loginUser, signUpUser} from '../actions/authActionCreators'
 
-class Home extends Component {
+export class Home extends Component {
   constructor(props) {
     super(props)
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import '../assets/css/Timer.css';
 import { saveTime, getUserTimers } from '../actions/timeActionCreator'
 
-class Timer extends Component {
+export class Timer extends Component {
   constructor(props){
     super(props)
 
