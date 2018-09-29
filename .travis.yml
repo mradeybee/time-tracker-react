@@ -1,15 +1,17 @@
 language: node_js
 node_js:
-- '9'
+  - '9'
 before_install:
-- yarn install
+  - yarn install
 script:
-- npm run-script test
+  - npm run-script test
 deploy:
   provider: heroku
   api_key:
     secure: tju+LEI9VS0Ozg8gdh5tGeGTLTklf8zrgRjs2T8qkEG1T+ye/XIlwo09nYp9z5RAAKYov9EeWj+DV+pu+c84NRAhWYoaIAvKTppk8WQjhnleg5lEVLrXh0b/0uUk5noo6hRC2lIRiquvpK7WSrHXPzOGnol508rw6GLVHlzMP9dk9l/5BRUnVEOBK9fGkrK0fErNrTwwxMZkQtBQ+5LR0TCTk2f52y5tWDhNR2beOLEORPuIwDyEiBb8uTBPQOByLfUyOFNtlZj3fsTuyjh4/7Q49gZCPoChuF/KHyeghUxF8B4R8d34CwIYEeEcnjLMiDsOEtADLzQMRWjIaJEykfCler/1xuVMMQmRJpgcxOtNJMtfPAuTlUcAKucuO9203Rp8RWSyE33RxTbs7nv7IF/UAqP+NXxO5S3Vk4W88881HUGDs1pQcv6BMkvzcs+fYME/ubh3heEIihlixvDwD2eqf1vww7N0GA7P46OnZbhAghklFv03RKsedelVt0jT0M+/gC3cN9SzPMGsHhmhEFQml+raOJ/oq2H0pBPnfX+yLNktwEAmYO8ThtHNfVzSDC+bmZ/2X/jAWVoszqR6sKj0gGpRv1bdKtk87oNtokgTrQGH+SlMSN6CRJ6YmxOZlr3kHgyhJPvIISM6lErxB7jziXxeZ1yqTy1lnYUkIuI=
-  app: time-tracker-react
+  app: timetracker21
   on:
     repo: mradeybee/time-tracker-react
     branch: master
+  run:
+    - 'yarn install'
