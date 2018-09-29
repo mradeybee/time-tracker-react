@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import '../assets/css/App.css'
 import {logOutUser} from '../actions/authActionCreators'
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props)
 
