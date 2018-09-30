@@ -18,7 +18,7 @@ describe('Login Form <Home />', () => {
 describe('Sign Up Form <Home />', () => {
   it('Shows Sign Up Form', () => {
     const wrapper = mount(<Home auth={{user: {}}} />)
-    wrapper.setState({ formTitle: 'Sign Up' })
+    wrapper.setState({ formType: 'signup' })
     
     itBehavesLikeSignUpForm(wrapper)
   })
