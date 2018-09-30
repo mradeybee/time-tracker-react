@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './assets/css/index.css';
+import { BrowserRouter, Route } from 'react-router-dom'
+
 import App from './components/App';
 import Home from './components/Home'
-import { BrowserRouter, Route } from 'react-router-dom'
 
 import store from './lib/store'
 

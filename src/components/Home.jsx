@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import '../assets/css/Home.css';
 import Form from './Form'
 import Timer from './Timer'
+
+import {clearFormErrors} from '../actions/formActionCreators'
 import {loginUser, signUpUser} from '../actions/authActionCreators'
 
-export class Home extends Component {
-  constructor(props) {
-    super(props)
+import '../assets/css/Home.css'
 
-    this.state = {formTitle: 'Log In'}
+export class Home extends Component {
+  constructor() {
+    super()
+
+    this.state = {formType: 'login'}
 
     this.onSubmit = this.onSubmit.bind(this)
     this.toggleForm = this.toggleForm.bind(this)
@@ -25,34 +28,38 @@ export class Home extends Component {
       data[entry[0]] = entry[1]
     }
 
-    this.state.formTitle === 'Log In' ? this.props.loginUser(data) : this.props.signUpUser(data)
+    this.props.clearFormErrors()
+    this.state.formType === 'login' ? this.props.loginUser(data) : this.props.signUpUser(data)
   }
 
   toggleForm(event) {
     event.preventDefault()
 
-    const form = this.state.formTitle === 'Log In' ? 'Sign Up' : 'Log In'
-    this.setState({formTitle: form})
+    this.props.clearFormErrors()
+
+    const formType = this.state.formType === 'login' ? 'signup' : 'login'
+    this.setState({formType})
   }
 
   render() {
     const authoken = this.props.auth.user.jwt
 
     return (
-      <div className="Home">
+      <div className="home">
         {
-          authoken ? <Timer /> :
-          <Form
-            formTitle={this.state.formTitle}
-            onSubmit={this.onSubmit}
-            toggleForm={this.toggleForm}
-            formError={this.props.auth.signUpError || this.props.auth.loginError}
-          />
+          authoken ?
+            <Timer /> :
+            <Form
+              formType={this.state.formType}
+              onSubmit={this.onSubmit}
+              toggleForm={this.toggleForm}
+              formError={this.props.auth.signUpError || this.props.auth.loginError}
+            />
         }
       </div>
     );
   }
 }
 
-const mapStateToProps = ({auth}) => ({auth})
-export default connect(mapStateToProps, { loginUser, signUpUser })(Home)
+const mapStateToProps = ({ auth }) => ({ auth })
+export default connect(mapStateToProps, { loginUser, signUpUser, clearFormErrors })(Home)

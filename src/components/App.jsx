@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+import { logOutUser } from '../actions/authActionCreators'
+
 import '../assets/css/App.css'
-import {logOutUser} from '../actions/authActionCreators'
 
 export class App extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.logOut = this.logOut.bind(this)
   }
@@ -14,18 +16,18 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          Time Tracker
+      <div className="app-container">
+        <header className="app-header">
+          <span>Time Tracker</span>
           {this.props.auth.user.jwt && <a onClick={this.logOut}>Log Out</a>}
         </header>
-        <div className="App-intro">
+        <div className="app-body">
           {this.props.children}
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({auth}) => ({auth})
-export default connect(mapStateToProps, {logOutUser})(App)
+const mapStateToProps = ({ auth }) => ({ auth })
+export default connect(mapStateToProps, { logOutUser })(App)

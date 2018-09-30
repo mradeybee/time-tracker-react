@@ -9,12 +9,12 @@ describe('<App />', () => {
   it('Shows the header text alone when user is not logged in', () => {
     const wrapper = shallow(<App auth={{user: {}}} />)
 
-    expect(wrapper.find('.App-header').text()).toEqual('Time Tracker')
+    expect(wrapper.find('.app-header').text()).toEqual('Time Tracker')
   })
 
   it('Shows the header text and logout link when user is logged in', () => {
     const wrapper = shallow(<App auth={{user: {jwt: 'valid-token'}}} />)
 
-    expect(wrapper.find('.App-header').text()).toMatch('Log Out')
+    expect(wrapper.find('.app-header').text()).toMatch('Log Out')
   })
 })

@@ -7,13 +7,13 @@ import {
 } from './shared_examples/sharedFormExamples'
 
 describe('Login <Form />', () => {
-  const wrapper = mount(<Form formTitle='Log In' toggleForm={() => {}} />)
+  const wrapper = mount(<Form formType='login' toggleForm={() => {}} />)
 
   itBehavesLikeLogInForm(wrapper)
 })
 
 describe('SignUp <Form />', () => {
-  const wrapper = mount(<Form formTitle='Sign Up' toggleForm={() => {}} />)
+  const wrapper = mount(<Form formType='signup' toggleForm={() => {}} />)
 
   itBehavesLikeSignUpForm(wrapper)
 })
