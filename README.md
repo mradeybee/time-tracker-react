@@ -15,7 +15,7 @@ $ git clone git@github.com:mradeybee/time-tracker-react.git
 $ yarn install
 ```
 
-- Make sure that the API is running correctly, see the API and how to set is up [here](https://github.com/mradeybee/time-tracker-api). 
+- Make sure that the API is running correctly, see the API and how to set it up [here](https://github.com/mradeybee/time-tracker-api).
 
 - Start the Application
 
